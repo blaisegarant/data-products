@@ -1,0 +1,28 @@
+---
+title: "Leaflet Test"
+author: "Blaise Garant"
+date: "March 19, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE, warning=FALSE}
+library(leaflet)
+df <- read.csv('Country_data.csv')
+```
+
+## UK Commonwealth
+
+As of March 6, 2018, here the ten most populous nations members of the UK Commonwealth (centered on capital).
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, comment=FALSE}
+df %>%
+    leaflet() %>%
+    addTiles() %>%
+    addCircles(weight=2, radius = sqrt(df$Population)*30)
+
+
+```
